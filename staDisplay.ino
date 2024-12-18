@@ -7,7 +7,7 @@ const int trimmerPin = A0;
 void setup() {
   // Inizializzazione dei pin dei LED come OUTPUT
   for (int i = 0; i < 10; i++) {
-    pinMode(ledPins[i], LOW); // Assicurati che i LED siano spenti all"inizio
+    pinMode(ledPins[i], OUTPUT); // Assicurati che i LED siano spenti all"inizio
     digitalWrite(ledPins[i], LOW); // Assicurati che I LED siano spenti all"inizio
   }
   // Inizializzazione dle pin del timmer come INPUT
@@ -19,7 +19,7 @@ void loop() {
   int timmerValue = analogRead(trimmerPin);
   
   // Mappa il valore letto (0, 1023) al numero di LED (0-10)
-  int numLeds = map(timmerValue, 0, 1023, 0, 10);
+  int numLeds = map(timmerValue, 0, 1023, 0, 11);
 
   // Assicurati che numLeeds non superi i limiti
   numLeds = constrain(numLeds, 0, 10);
@@ -34,5 +34,5 @@ void loop() {
   }
   
   // Piccola pausa per styabilizzare la lattura
-  delay(100);
+  delay(10);
 }
